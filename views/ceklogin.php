@@ -1,20 +1,26 @@
 <?php
 include 'koneksi.php';
 
-$user = $_POST['username'];
-$pass = $_POST['password'];
+$user = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+$pass = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
-$query = mysqli_query($koneksi_db, "select *from adm where admnme = '$user' and 
-         admpw = '$pass'");
-$cek = mysqli_num_rows($query);
-if($cek>0){
+$sql = "SELECT * FROM adm WHERE admnme = ? AND admpw = ?";
+$stmt = $koneksi_db->prepare($sql);
+$stmt->bind_param("ss", $user, $pass);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$cek = $result->num_rows;
+
+if ($cek > 0) {
     echo '<script>
-        alert("Login Account Succes!");
+        alert("Login Account Successful!");
         location.href = "../views/pelanggan.php";
     </script>';
-} else{
+} else {
     echo '<script>
-    location.href = "login.php";
+        location.href = "login.php";
     </script>';
 }
-?>
+
+$stmt->close();
