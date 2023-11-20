@@ -15,7 +15,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
-        <a class="navbar-brand" href="#">WELCOME ADMIN! | <b>KLINIK CANTIK</b></a>
+        <a class="navbar-brand" href="#">WELCOME ADMIN!|<b>KLINIK CANTIK</b></a>
           <div class="icon ml-4">
             <h5>
               <i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Surat Masuk"></i>
