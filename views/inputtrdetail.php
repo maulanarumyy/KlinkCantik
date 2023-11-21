@@ -18,27 +18,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="../CSS/input.css" media="all">
-    <script> 
-        function pengurangan()
-        {
-
-            var peng1,peng2,hasil;
-
-            peng1 = input(peng1);
-            peng2 = input(peng2);
-
-            hasil = ppengurangan(peng1,peng2);
-
-            Tapilan(hasil);
-        }
-
-        function ppengurangan(bilpeng1, bilpeng2)
-        {
-            var hasil1;
-            hasil = bilpeng1 - bilpeng2;
-            return hasil1;
-        }
-    </script>
 </head>
 <body>
     <?php
@@ -75,14 +54,13 @@
         $total_bayar = $_POST['total_bayar'];
         $total_kembalian = $_POST['total_kembalian'];
             
-
         $add = mysqli_query($koneksi_db, "INSERT INTO apenjualan (id_transaksi, id_customer, tanggal_transaksi, total_transaksi, total_bayar, total_kembalian) 
-        VALUES ('$kdpinjam', '$idcustomer', '$tgltransaksi', '$total_transaksi', '$total_transaksi','$total_bayar', '$total_kembalian')");
+        VALUES ('$kdpinjam', '$idcustomer', '$tgltransaksi', '$total_transaksi', '$total_bayar', '$total_kembalian')");
 
         if($add)
         {
             echo "<script>alert('data berhasil disimpan');
-            document.location.href='pembelian.php'</script>\n";"";
+            document.location.href='pembelian.php'</script>\n";
         } else 
         {
             echo 'Data Gagal Disimpan <br> <a href="inputpembelian.php">Kembali</a>';
@@ -90,43 +68,42 @@
     }
     ?>
             <div class="container">
-                <form action="inputtransaksi.php" method="post">
-                <h2 class="alert alert-dark text-center mt-3">TRANSAKSI DETAILS</h2>
-                <div class="form-group">
-                    <label for="kode" class="text-dark">Kode Transaksi</label>
-                    <input type="text" class="form-control" name="kode" value="<?php echo $kode ?>" readonly>
-                </div>
+                <form id="transaksiForm" method="post">
+                    <h2 class="alert alert-dark text-center mt-3">TRANSAKSI DETAILS</h2>
+                    <div class="form-group">
+                        <label for="kode" class="text-dark">Kode Transaksi</label>
+                        <input type="text" class="form-control" name="kode" value="<?php echo $kode ?>" readonly>
+                    </div>
 
-                <div class="form-group">
-                    <label for="sel1">Nama Customer</label><br>
-                    <input type="text" name="nama_customer" value="<?php echo $nmcustomer?>">
-                    <input type="submit" name="Cari" value="SEARCH"><br>
+                    <div class="form-group">
+                        <label for="sel1">Nama Customer</label><br>
+                        <input type="text" name="nama_customer" value="<?php echo $nmcustomer?>">
+                        <input type="submit" name="Cari" value="SEARCH"><br>
 
-                    <label>ID Customer</label>
-                    <input class="form-control" type="text" name="id_customer" value="<?php echo $idcustomer ?>" readonly>     
-                </div>
-                <div class="form-group">
-                    <label for="tanggal_transaksi" class="text-dark">Tanggal Transaksi</label>
-                    <input type="date" class="form-control" name="tanggal_transaksi" >
-                </div>
-                <div class="form-group">
-                    <label>Total Transaksi</label>
-                    <input type="text" id="peng1" name="total_transaksi" class="form-control" placeholder="Masukan Total Transaksi">
-                </div>
-                <div class="form-group">
-                    <label>Total Bayar</label>
-                    <input type="text" id="peng2" name="total_bayar" class="form-control" placeholder="Masukan Total Bayar"> <br>
-                    <input type="submit" name="pengurangan" value="TOTAL" onclick="pengurangan()"><br>
-
-                </div>
-                <div class="form-group">
-                    <label>Total Kembalian</label>
-                    <input type="text" id="output" name="total_kembalian" class="form-control" readonly>
-                </div>
-                <div class="form-group">
-                    <input type="submit" name="submit" class="btn btn-primary">
-                    <a href="transaksi.php" class="btn btn-dark">Cancel</a>
-                </div>
+                        <label>ID Customer</label>
+                        <input class="form-control" type="text" name="id_customer" value="<?php echo $idcustomer ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal_transaksi" class="text-dark">Tanggal Transaksi</label>
+                        <input type="date" class="form-control" name="tanggal_transaksi">
+                    </div>
+                    <div class="form-group">
+                        <label>Total Transaksi</label>
+                        <input type="text" id="peng1" name="total_transaksi" class="form-control" placeholder="Masukkan Total Transaksi">
+                    </div>
+                    <div class="form-group">
+                        <label>Total Bayar</label>
+                        <input type="text" id="peng2" name="total_bayar" class="form-control" placeholder="Masukkan Total Bayar"> <br>
+                        <input type="submit" name="pengurangan" value="TOTAL" onclick="pengurangan()"><br>
+                    </div>
+                    <div class="form-group">
+                        <label>Total Kembalian</label>
+                        <input type="text" id="output" name="total_kembalian" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" name="submit" class="btn btn-primary" onclick="submitForm()">
+                        <a href="transaksi.php" class="btn btn-dark">Cancel</a>
+                    </div>
                 </form>
             </div>
             <script>
@@ -136,9 +113,22 @@
                     input = parseFloat(document.getElementById(idElement).value);
                     return input;
                 }
-                function Tapilan(hass)
+                function pengurangan() {
+                    var peng1 = parseFloat(document.getElementById("peng1").value);
+                    var peng2 = parseFloat(document.getElementById("peng2").value);
+
+                    var hasil = peng1 - peng2;
+
+                    document.getElementById("output").value = hasil;
+                }
+                function tampilkan(hass)
                 {
                     document.getElementById("output").innerHTML=hass;
                 }
+                function submitForm() {
+                    // Fungsi untuk menangani pengiriman formulir
+                    document.getElementById("transaksiForm").submit();
+                }
+                    
             </script>
 </body>
