@@ -8,6 +8,8 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
 
+        <link rel="stylesheet" href="../CSS/input.css" media="all">
+
         <title>KLINIK CANTIK</title>
     </head>
 <body>
