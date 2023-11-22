@@ -79,7 +79,7 @@ CREATE TABLE `aobat` (
 -- Dumping data for table `aobat`
 --
 
-INSERT INTO `aobat` (`id_obat`, `nama_obat`, `stock`, `tanggal_kdlswr`) VALUES
+INSERT INTO `obat` (`id_obat`, `nama_obat`, `stock`, `tanggal_kdlswr`) VALUES
 ('TAB2345', 'Makarizo Hair Spray', 20, '2024-01-09');
 
 -- --------------------------------------------------------

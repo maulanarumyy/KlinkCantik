@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -58,7 +59,7 @@
             </thead>
             <tbody>
               <?php
-                    include "koneksi.php";
+                    include "../controller/koneksi.php";
                     $query  = mysqli_query($koneksi_db,"select *from aobat order by id_obat");
                     $no = 1;
                     while ($data=mysqli_fetch_array($query)) {

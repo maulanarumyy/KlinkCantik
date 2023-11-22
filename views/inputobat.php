@@ -6,9 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
-
-        <link rel="stylesheet" href="../CSS/input.css" media="all">
+        <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
 
         <title>KLINIK CANTIK</title>
     </head>
@@ -16,7 +14,7 @@
     <div class="container">
         <h2 class="alert alert-dark text-center mt-3">INPUT OBAT</h2>
 
-        <form action="cekobat.php" method="post">
+        <form action="../controller/cekobat.php" method="post">
             <div class="form-group">
                 <label>ID Obat</label>
                 <input type="text" name="id" class="form-control" placeholder="Masukan ID Obat">

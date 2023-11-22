@@ -1,6 +1,8 @@
 <?php
 include "koneksi.php";
 
+session_start();
+
 $id = $_POST['id'];
 $nama = $_POST['nama'];
 $stock = $_POST['stock'];
@@ -14,7 +16,7 @@ mysqli_stmt_bind_param($stmt, 'ssss', $id, $nama, $stock, $tahun);
 $query = mysqli_stmt_execute($stmt);
 
 if ($query) {
-    echo "<script>alert('Data Berhasil Disimpan'); document.location.href='obat.php'</script>\n";
+    echo "<script>alert('Data Berhasil Disimpan'); document.location.href='../views/obat.php'</script>\n";
 } else {
     echo "<script>alert('Data Gagal Disimpan'); document.location.href='inputobat.php'</script>\n";
 }

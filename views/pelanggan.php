@@ -62,7 +62,7 @@
             </thead>
             <tbody>
                 <?php
-                    include "koneksi.php";
+                    include "../controller/koneksi.php";
                     $query  = mysqli_query($koneksi_db,"select * from acustomer order by id_customer");
                     $no = 1;
                     while ($data=mysqli_fetch_array($query)) {

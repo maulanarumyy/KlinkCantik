@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    session_regenerate_id();
+
+    session_destroy();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +18,14 @@
 <body>
     <div class="kotak_login">
 	    <p class="tulisan_login">Silahkan login</p>
-    <form action="ceklogin.php" method="post">
+    <form action="../controller/ceklogin.php" method="post">
 		<label>Username</label>
 		<input type="text" name="username" class="form_login" placeholder="Username">
 
 		<label>Password</label>
 		<input type="password" name="password" class="form_login" placeholder="Password">
+
+        <!-- <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>"> -->
 
         <input type="submit" class="tombol_login" value="LOGIN">
 	</form>
